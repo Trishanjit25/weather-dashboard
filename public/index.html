@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>Weather Dashboard</h1>
+      <div class="controls">
+        <input id="searchInput" type="search" placeholder="Enter city (e.g. London)" />
+        <button id="searchBtn">Search</button>
+        <button id="geoBtn" title="Use current location">📍</button>
+        <select id="units">
+          <option value="metric">°C</option>
+          <option value="imperial">°F</option>
+        </select>
+      </div>
+    </header>
+
+    <section id="current" class="card hidden">
+      <div class="card-header">
+        <h2 id="cityName"></h2>
+        <p id="time"></p>
+      </div>
+      <div class="card-body">
+        <div class="weather-main">
+          <img id="weatherIcon" alt="weather icon" />
+          <div>
+            <p id="temp" class="large"></p>
+            <p id="description" class="muted"></p>
+          </div>
+        </div>
+        <ul id="details" class="details">
+          <!-- humidity, wind, etc -->
+        </ul>
+      </div>
+    </section>
+
+    <section id="forecast" class="forecast hidden">
+      <h3>5-Day Forecast</h3>
+      <div id="forecastCards" class="forecast-grid"></div>
+    </section>
+
+    <div id="error" class="error hidden"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
