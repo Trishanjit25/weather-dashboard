@@ -5,32 +5,74 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Weather Dashboard</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Animated background elements -->
+  <div class="weather-bg">
+    <div class="bg-gradient"></div>
+    <div class="bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+  </div>
+
   <main class="container">
     <header class="header">
-      <h1>Weather Dashboard</h1>
+      <div class="logo-section">
+        <svg class="weather-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+          <circle cx="12" cy="12" r="4"/>
+        </svg>
+        <h1>Weather Dashboard</h1>
+      </div>
       <div class="controls">
-        <input id="searchInput" type="search" placeholder="Enter city (e.g. London)" />
-        <button id="searchBtn">Search</button>
-        <button id="geoBtn" title="Use current location">📍</button>
-        <select id="units">
+        <input id="searchInput" type="search" placeholder="Enter city (e.g. London)" aria-label="Search city" />
+        <button id="searchBtn" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.35-4.35"/>
+          </svg>
+          Search
+        </button>
+        <button id="geoBtn" class="btn-icon" title="Use current location" aria-label="Use current location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+          </svg>
+        </button>
+        <select id="units" aria-label="Temperature units">
           <option value="metric">°C</option>
           <option value="imperial">°F</option>
         </select>
       </div>
     </header>
 
+    <!-- Loading Spinner -->
+    <div id="loader" class="loader hidden">
+      <div class="spinner"></div>
+      <p>Fetching weather data...</p>
+    </div>
+
     <section id="current" class="card hidden">
       <div class="card-header">
-        <h2 id="cityName"></h2>
-        <p id="time"></p>
+        <div class="location-info">
+          <h2 id="cityName"></h2>
+          <p id="time"></p>
+          <p id="lastUpdated" class="last-updated"></p>
+        </div>
+        <div class="weather-condition">
+          <img id="weatherIcon" alt="weather icon" />
+        </div>
       </div>
       <div class="card-body">
         <div class="weather-main">
-          <img id="weatherIcon" alt="weather icon" />
-          <div>
+          <div class="temp-section">
             <p id="temp" class="large"></p>
+            <p id="feelsLike" class="feels-like"></p>
             <p id="description" class="muted"></p>
           </div>
         </div>
@@ -45,8 +87,19 @@
       <div id="forecastCards" class="forecast-grid"></div>
     </section>
 
-    <div id="error" class="error hidden"></div>
+    <div id="error" class="error hidden">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 8v4M12 16h.01"/>
+      </svg>
+      <p id="errorMessage"></p>
+      <button id="retryBtn" class="btn-retry">Try Again</button>
+    </div>
   </main>
+
+  <footer class="footer">
+    <p>Weather data provided by <a href="https://openweathermap.org" target="_blank" rel="noopener">OpenWeatherMap</a></p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
