@@ -1,6 +1,6 @@
 ## 🚀 Live Demo  
 🔗 Check the live weather dashboard here:  
-👉 https://weather-dashboard-9r9b.onrender.com/
+👉 https://weather-dashboard-9r9b.onrender.com/(service is now currently suspended for some new updates and other deployments.)
 
 ## 🌤️ Weather Dashboard
 A beautiful, responsive, and real-time weather forecasting application powered by the OpenWeather API.  
